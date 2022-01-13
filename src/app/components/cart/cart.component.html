@@ -1,0 +1,69 @@
+<ng-container *ngIf="products.length != 0 && done == false">
+    <div class="container">
+        <div class="card-table">
+            <div class="card-product">
+                <div class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nombre del producto</th>
+                            <th>Imagen del producto</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of products; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.title}}</td>
+                            <td><img style="width: 120px;" src="{{product.image}}" alt=""></td>
+                            <td style="width: 25%;">{{product.description}}</td>
+                            <td style="width: 12%;">{{product.price | currency}}</td>
+                            <td style="width: 12%;">{{product.quantity}}</td>
+                            <td style="width: 12%;">{{product.total | currency}}</td>
+                            <td><button (click)="removeItem(product)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button class="btn btn-danger" (click)="emptyCart()">Vaciar carrito</button></td>
+                            <td><button class="btn btn-primary" routerLink="">Seguir comprando</button></td>
+                            <td><button class="btn btn-success" (click)="shopDone()">Comprar ahora</button></td>
+                            <td><strong>Total {{grandTotal | currency}}</strong></td>
+                        </tr>
+                    </tbody>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="products.length == 0 && done == false">
+    <div class="container">
+        <div class="card">
+            <h5>Mi Carrito</h5>
+            <div class="card-body center">
+                <img src="https://www.asesora2.cl/servicios/33-thickbox_default/proyecto-e-commerce.jpg" alt="">
+                <h4>Tu carrito está vacio</h4>
+                <h6>Añadir un artículo</h6>
+                <button routerLink="" class="btn btn-primary">Comprar Ahora</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="done == true">
+    <div class="container">
+        <div class="card">
+            <div class="card-body center">
+                <h1>Gracias por tu compra</h1>
+                <h6>Estamos procesando tu pedido</h6>
+                <button routerLink="" class="btn btn-primary">Seguir Comprando</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+

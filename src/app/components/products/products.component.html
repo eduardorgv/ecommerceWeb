@@ -1,0 +1,37 @@
+<app-banner></app-banner>
+
+<div class="container">
+    <div class="row g-4">
+        <ng-container *ngFor="let product of filterCategory | filter:searchKey:'title'">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card animate__animated animate__fadeIn">
+                    <img src="{{product.image}}" alt="product image" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <b style="font-size: x-large;">{{ product.price | currency }}</b>
+                    </div>
+                    <button class="btn btn-primary" (click)="addToCart(product)">Añadir al Carrito</button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row py-4">
+        <div class="col-12 col-lg-6">
+            <h2 class="text-center">Somos el número #1</h2>
+            <p>Al comprar en Edu-Shop realizas compras seguras y formas parte de una cadena de venta junto con personas de todas partes del mundo, brindando apoyo a múltiples empresas del mundo.</p>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2 class="text-center">Gana dinero</h2>
+            <p>Te ofrecemos una estructura tarifaria única y accesible, con distintas opciones de gestion logística. Además, tu cuenta queda automáticamente habilitada para que vendas en todas partes del mundo sin restricciones</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
